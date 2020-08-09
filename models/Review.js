@@ -62,12 +62,12 @@ ReviewSchema.statics.getAverageRating = async function (farmId) {
   }
 };
 
-// // Call getAverageCost after save
-// ReviewSchema.pre('save', function () {
-//   if (!this.isModified('rating')) {
-//     this.constructor.getAverageRating(this.farm);
-//   }
-// });
+// Call getAverageCost after save
+ReviewSchema.pre('save', function () {
+  if (!this.isModified('rating')) {
+    this.constructor.getAverageRating(this.farm);
+  }
+});
 
 // Call getAverageCost after save
 ReviewSchema.post('save', function () {
