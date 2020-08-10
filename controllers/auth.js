@@ -58,7 +58,7 @@ exports.register = asyncHandler(async (req, res, next) => {
 //@route  POST /api/v1/auth/login
 //@access Public
 exports.login = asyncHandler(async (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
   const { email, password } = req.body;
 
   // Validate email and password
@@ -238,7 +238,7 @@ const sendTokenResponse = (user, statusCode, res) => {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000
     ),
-    httpOnly: true,
+    // httpOnly: true,
   };
 
   if (process.env.NODE_ENV === 'production') {
