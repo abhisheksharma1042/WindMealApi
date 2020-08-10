@@ -40,6 +40,10 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     default: 'no-photo.jpg',
   },
+  status: {
+    type: String,
+    default: 'Available',
+  },
 });
 
 // // Static method to get average rating
@@ -64,6 +68,17 @@ const ProductSchema = new mongoose.Schema({
 //   console.log(error);
 // }
 // };
+// Set status
+ProductSchema.pre('save', function (next) {
+  if (this.quantity <= 0) {
+    this.status = 'Sold Out';
+  } else if (this.quantity > 5 && this.quantity < 10) {
+    this.status = 'Limited Avalaible';
+  } else {
+    this.status = 'Avalaible';
+  }
+  next();
+});
 
 //Create sell By date of 4 days from received on
 ProductSchema.pre('save', function (next) {
