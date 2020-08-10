@@ -5,11 +5,14 @@ const Farm = require('../models/Farm');
 
 // @desc      Get reviews
 // @route     GET /api/v1/reviews
-// @route     GET /api/v1/bootcamps/:farmId/reviews
+// @route     GET /api/v1/farms/:farmId/reviews
 // @access    Public
 exports.getReviews = asyncHandler(async (req, res, next) => {
   if (req.params.farmId) {
-    const reviews = await Review.find({ farm: req.params.farmId });
+    const reviews = await Review.find({ farm: req.params.farmId }).populate({
+      path: 'farm user',
+      select: 'name description',
+    });
 
     return res.status(200).json({
       success: true,
@@ -26,7 +29,7 @@ exports.getReviews = asyncHandler(async (req, res, next) => {
 // @access    Public
 exports.getReview = asyncHandler(async (req, res, next) => {
   const review = await Review.findById(req.params.id).populate({
-    path: 'farm',
+    path: 'farm user',
     select: 'name description',
   });
 
