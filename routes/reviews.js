@@ -27,7 +27,13 @@ router
 
 router
   .route('/:id')
-  .get(getReview)
+  .get(
+    advancedResults(Review, {
+      path: 'farm user',
+      select: 'name description',
+    }),
+    getReview
+  )
   .put(protect, authorize('client', 'admin'), updateReview)
   .delete(protect, authorize('client', 'admin'), deleteReview);
 
