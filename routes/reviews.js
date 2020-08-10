@@ -18,7 +18,7 @@ router
   .route('/')
   .get(
     advancedResults(Review, {
-      path: 'farm',
+      path: 'farm user',
       select: 'name description',
     }),
     getReviews

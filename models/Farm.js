@@ -66,7 +66,7 @@ const FarmSchema = new mongoose.Schema(
     averageCost: Number,
     photo: {
       type: String,
-      default: 'no-photo.jpg',
+      default: 'no-photo.png',
     },
     delivery: {
       type: Boolean,
