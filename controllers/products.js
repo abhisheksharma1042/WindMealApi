@@ -11,7 +11,7 @@ const ErrorResponse = require('../utils/errorResponse');
 
 exports.getProducts = asyncHandler(async (req, res, next) => {
   if (req.params.farmId) {
-    const products = await Product.find({ product: req.params.farmId });
+    const products = await Product.find({ farm: req.params.farmId });
 
     res.status(200).json({
       success: true,

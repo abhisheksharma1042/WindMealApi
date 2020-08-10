@@ -70,6 +70,7 @@ const ProductSchema = new mongoose.Schema({
 // };
 // Set status
 ProductSchema.pre('save', function (next) {
+  this.sellBy = new Date().setDate(new Date().getDate() + 4);
   if (this.quantity <= 0) {
     this.status = 'Sold Out';
   } else if (this.quantity > 5 && this.quantity < 10) {
@@ -77,13 +78,6 @@ ProductSchema.pre('save', function (next) {
   } else {
     this.status = 'Avalaible';
   }
-  next();
-});
-
-//Create sell By date of 4 days from received on
-ProductSchema.pre('save', function (next) {
-  this.sellBy = new Date().setDate(new Date().getDate() + 4);
-  // console.log('Sell By added');
   next();
 });
 
