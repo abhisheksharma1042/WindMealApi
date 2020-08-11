@@ -110,7 +110,7 @@ exports.getMe = asyncHandler(async (req, res, next) => {
   }
   const user = await User.findById(req.user.id);
   const farm = await Farm.find({ user: user });
-  const reviews = await Review.find({ user: user });
+  const reviews = await Review.find({ user: user }).populate('farm');
 
   res.status(200).json({
     success: true,
