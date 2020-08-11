@@ -55,7 +55,7 @@ ReviewSchema.statics.getAverageRating = async function (farmId) {
 
   try {
     await this.model('Farm').findByIdAndUpdate(farmId, {
-      averageRating: obj[0].averageRating,
+      averageRating: Math.round((obj[0].averageRating * 10) / 10),
     });
   } catch (err) {
     console.error(err);
