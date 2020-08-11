@@ -5,6 +5,7 @@ const asyncHandler = require('../middleware/async');
 const ErrorResponse = require('../utils/errorResponse');
 const sendEmail = require('../utils/sendEmail');
 const crypto = require('crypto');
+const Review = require('../models/Review');
 
 //@desc   Register user
 //@route  POST /api/v1/auth/register
@@ -109,6 +110,7 @@ exports.getMe = asyncHandler(async (req, res, next) => {
   }
   const user = await User.findById(req.user.id);
   const farm = await Farm.find({ user: user });
+  const reviews = await Review.find({ user: user });
 
   res.status(200).json({
     success: true,
