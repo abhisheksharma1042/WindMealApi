@@ -108,10 +108,11 @@ exports.getMe = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse('No user logged in', 400));
   }
   const user = await User.findById(req.user.id);
+  const farm = await Farm.find({user: user});
 
   res.status(200).json({
     success: true,
-    data: user,
+    data: {"user":user, "farm":farm};
   });
 });
 
