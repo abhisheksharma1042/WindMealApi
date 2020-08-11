@@ -1,11 +1,11 @@
 const path = require('path');
 const User = require('../models/User');
 const Farm = require('../models/Farm');
+const Review = require('../models/Review');
 const asyncHandler = require('../middleware/async');
 const ErrorResponse = require('../utils/errorResponse');
 const sendEmail = require('../utils/sendEmail');
 const crypto = require('crypto');
-const Review = require('../models/Review');
 
 //@desc   Register user
 //@route  POST /api/v1/auth/register
@@ -114,7 +114,7 @@ exports.getMe = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    data: { user: user, farm: farm },
+    data: { user, farm, reviews },
   });
 });
 
