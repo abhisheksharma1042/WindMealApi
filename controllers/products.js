@@ -4,14 +4,17 @@ const Farm = require('../models/Farm');
 const asyncHandler = require('../middleware/async');
 const ErrorResponse = require('../utils/errorResponse');
 
-//@desc   Get all Products
+//@desc   Get all Products of Farm
 //@route  GET /api/v1/products
 //@route  GET /api/v1/farms/:farmId/products
 //@access Public
 
 exports.getProducts = asyncHandler(async (req, res, next) => {
   if (req.params.farmId) {
-    const products = await Product.find({ farm: req.params.farmId });
+    const products = await Product.find({ farm: req.params.farmId }).populate({
+      path: 'farm',
+      select: 'name',
+    });
 
     res.status(200).json({
       success: true,
@@ -53,7 +56,7 @@ exports.getProduct = asyncHandler(async (req, res, next) => {
 //@route  PUT /api/v1/products/:id
 //@access Private
 exports.updateProduct = asyncHandler(async (req, res, next) => {
-  let product = await Product.findById(req.params.id).populate('farm', 'name');
+  let product = await Product.findById(req.params.id);
 
   if (!product) {
     return next(
