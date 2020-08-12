@@ -36,7 +36,9 @@ router
   .put(protect, authorize('farmer'), updateFarm)
   .delete(protect, authorize('farmer'), deleteFarm);
 
-router.route('/radius/:zipcode/:miles').get(findFarmInRadius);
+router
+  .route('/radius/:zipcode/:miles')
+  .get(advancedResults(Farm), findFarmInRadius);
 
 router.route('/:id/photo').put(protect, authorize('farmer'), addPhotoToFarm);
 router
