@@ -186,11 +186,7 @@ exports.findFarmInRadius = asyncHandler(async (req, res, next) => {
       $geoWithin: { $centerSphere: [[lng, lat], radius] },
     },
   });
-  res.status(200).json({
-    success: true,
-    count: farms.length,
-    data: farms,
-  });
+  res.status(200).json(res.advancedResults);
 });
 
 //@desc   Get publishers for Farm
