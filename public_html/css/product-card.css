@@ -1,0 +1,79 @@
+/*======================================================================
+      Author: Abhishek Sharma
+      FileName: style.css
+      Class: CSC 337
+      Description: styling for Final project front-end.
+====================================================================== */
+
+.magic {
+  position: absolute;
+  height: 92.3%;
+  width: 87%;
+  background-color: transparent;
+  overflow-y: scroll;
+}
+
+.base-product,
+.product {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  position: relative;
+  height: 280px;
+  /*	margin-right: 50px;*/
+}
+
+.product-card {
+  /*	display: flex;*/
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.product-card-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30%;
+  background: linear-gradient(180deg, #f5f1da, #e3dfc8);
+  text-align: center;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+  border-right: solid 10px rgba(122, 69, 19, 1);
+}
+
+.product-card-right {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background: linear-gradient(180deg, #f5f1da, #e3dfc8);
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.img-wrap {
+  width: 170px;
+  height: 120px;
+  align-self: center;
+}
+
+.buy-now {
+  padding-bottom: 20px;
+}
+
+.product-dscrp {
+  padding-top: 15px;
+}
+
+.product-price {
+  padding-top: 15px;
+}
+
+.product-btn {
+  padding-top: 20px;
+}

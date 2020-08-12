@@ -29,6 +29,7 @@ const users = require('./routes/users');
 const reviews = require('./routes/reviews');
 
 const app = express();
+app.use('/', express.static('public_html'));
 
 // Body parser
 app.use(express.json());
@@ -91,8 +92,6 @@ app.use('/api/v1/reviews', reviews);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
-
-app.use('/', express.static('public_html'));
 
 const server = app.listen(
   PORT,

@@ -1,0 +1,1253 @@
+<!-- ======================================================================
+  Author: Abhishek Sharma
+  FileName: index.html
+  Class: CSC 337
+  Description: Homepage for Final Project, it is a view for the backend API 
+  that is a directory for local farms and allows user to browse farms and their 
+  products being offered. Detailed API documentation at https://windmeal.live
+====================================================================== -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <script src="https://kit.fontawesome.com/3da1a747b2.js"></script>
+  <script src="./js/client-requests.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/product-card.css" />
+  <title>WindMeal | Find a a local Farm</title>
+</head>
+
+<body>
+  <!-- Homepage Navbar -->
+  <nav class="homepageNav navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><i class="fas fa-tractor"></i>WindMeal</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link showcase-loginView" href="#"><i class=" fas fa-sign-in-alt"></i> Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link showcase-registerView" href="#"><i class=" fas fa-user-plus"></i> Register</a>
+          </li>
+          <li class="nav-item d-none d-sm-block">
+            <a class="nav-link" href="#">|</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link showcase-farmsView" href="#">Browse farms</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- User Navbar -->
+  <nav class="userNav navbar navbar-expand-md navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><i class="fas fa-tractor"></i>WindMeal</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+              <i class="fas fa-user"></i> Account
+            </a>
+            <div class="dropdown-menu">
+              <a id="manage-farm-dropdown" class="dropdown-item" href="#">Manage Farm</a>
+              <a id="manage-reviews-dropdown" class="dropdown-item " href="#">Manage Reviews</a>
+              <a id="manage-account-dropdown" class="dropdown-item" href="#">Manage Account</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item logout" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+          </li>
+          <li class="nav-item d-none d-sm-block">
+            <a class="nav-link" href="#">|</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link showcase-farmsView" href="#">Browse Farms</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Showcase -->
+  <section class="showcase">
+    <div class="dark-overlay">
+      <div class="showcase-inner container">
+        <h1 class="display-4">Find a Farm near you</h1>
+        <p class="lead">
+          Find, rate and read reviews on local farms
+        </p>
+        <form action="farms.html">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control" name="miles" placeholder="Miles From" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control" name="zipcode" placeholder="Enter Zipcode" />
+              </div>
+            </div>
+          </div>
+          <input type="submit" value="Find Farms" class="btn btn-primary btn-block" />
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Login -->
+  <section class="login form mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 m-auto">
+          <div class="card bg-white p-4 mb-4">
+            <div class="card-body">
+              <h1><i class="fas fa-sign-in-alt"></i> Login</h1>
+              <p>
+                Log in to list your farm or rate, review and favorite farms
+              </p>
+              <form id="login-form" onsubmit="return false">
+                <div class="form-group">
+                  <label for="login-email-inp">Email Address</label>
+                  <input type="email" name="email" class="form-control" placeholder="Enter email" id="login-email-inp"
+                    required />
+                </div>
+                <div class="form-group mb-4">
+                  <label for="login-password-inp">Password</label>
+                  <input type="password" name="password" class="form-control" placeholder="Enter password"
+                    id="login-password-inp" required />
+                </div>
+                <div class="form-group">
+                  <input id="login-form-submit" type="submit" value="Login" class="btn btn-primary btn-block" />
+                </div>
+              </form>
+              <p>
+                Forgot Password?
+                <a href="#" id="login-to-reset">Reset Password</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Register -->
+  <section class="register form mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 m-auto">
+          <div class="card bg-white p-4 mb-4">
+            <div class="card-body">
+              <h1><i class="fas fa-user-plus"></i> Register</h1>
+              <p>
+                Register to list your farm or rate, review and favorite farms
+              </p>
+              <form id="register-form" onsubmit="return false">
+                <div class="form-group">
+                  <label for="register-name">Name</label>
+                  <input id="register-name" type="text" name="name" class="form-control" placeholder="Enter full name"
+                    required />
+                </div>
+                <div class="form-group">
+                  <label for="register-email">Email Address</label>
+                  <input type="email" name="email" class="form-control" id="register-email" placeholder="Enter email"
+                    required />
+                </div>
+                <div class="form-group">
+                  <label for="register-psw-inp">Password</label>
+                  <input type="password" name="password" class="form-control" placeholder="Enter password"
+                    id="register-psw-inp" required />
+                  <input type="checkbox" onclick="tooglePasswordVisibility();" />
+                  &nbsp; <small> Show Password </small>
+                </div>
+                <div class="form-group mb-4">
+                  <label for="register-conf-psw-inp">Confirm Password</label>
+                  <input type="password" name="password2" class="form-control" placeholder="Confirm password"
+                    id="register-conf-psw-inp" required />
+                </div>
+
+                <div class="card card-body mb-3">
+                  <h5>User Role</h5>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="role" value="client" checked />
+                    <label class="form-check-label">
+                      Client (Browse, Write reviews, etc)
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input id="register-role-farmer" class="form-check-input" type="radio" name="role" value="farmer" />
+                    <label class="form-check-label">
+                      Farmer (Publish a Farm and Products)
+                    </label>
+                  </div>
+                </div>
+                <p class="text-danger">
+                  * You must be affiliated with thefarm in some way in order
+                  to add it to WindMeal.
+                </p>
+                <div class="form-group">
+                  <input type="submit" value="Register" class="btn btn-primary btn-block" />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Farms View -->
+  <section class="browse my-5">
+    <div class="container">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-4">
+          <div class="card card-body mb-4">
+            <h4 class="mb-3">By Location</h4>
+            <form id="farm-view-find-form" onsubmit="return false">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input id="farm-view-miles" type="number" class="form-control" name="miles" placeholder="Miles From"
+                      required />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input id="farm-view-zipcode" type="number" class="form-control" name="zipcode"
+                      placeholder="Enter Zipcode" required />
+                  </div>
+                </div>
+              </div>
+              <input type="submit" value="Find farms" class="btn btn-primary btn-block" />
+            </form>
+          </div>
+
+          <h4>Filter</h4>
+          <form id="filter-form" onsubmit="return false">
+            <div class="form-group">
+              <label> Rating</label>
+              <select id="filter-form-rating" class="custom-select mb-2">
+                <option value="any" selected>Any</option>
+                <option value="9">9+</option>
+                <option value="8">8+</option>
+                <option value="7">7+</option>
+                <option value="6">6+</option>
+                <option value="5">5+</option>
+                <option value="4">4+</option>
+                <option value="3">3+</option>
+                <option value="2">2+</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label> Category</label>
+              <select id="filter-form-category" class="custom-select mb-2">
+                <option value="any" selected>Any</option>
+                <option value="meat">Sell Meat</option>
+                <option value="delivery">Delivery Service</option>
+                <option value="pickup">Pickup Service</option>
+              </select>
+            </div>
+            <input type="submit" value="Find Farms" class="btn btn-primary btn-block" />
+          </form>
+        </div>
+        <!-- Main col -->
+        <div class="col-md-8 farms-magic">
+          <!-- farms -->
+          <div class="card mb-3 base-farm">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="img/image_1.jpg" class="card-img" alt="..." />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <a class="farm-title" href='#'>
+                      Pivot Farm
+                    </a>
+                    <span class="float-right badge badge-success farm-rating"></span>
+                  </h5>
+                  <span class="badge badge-dark mb-2">Boston, MA</span>
+                  <p class="card-text farm-description">
+                    Web Development, UI/UX, Mobile Development
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item">
+                <a id="previous-page-link" class="page-link" href="#">Previous</a>
+              </li>
+              <li class="page-item"><a class="page-link" id="previous-page">1</a></li>
+              <li class="page-item"><a style="color:red" class="page-link" href="#" id="current-page">2</a></li>
+              <li class="page-item"><a class="page-link" id="next-page">3</a></li>
+              <li class="page-item">
+                <a id="next-page-link" class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Farm View: Need add filtering-->
+  <section class="farm mt-5">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-8">
+          <h1 id="farm-view-title">DevWorks Farm</h1>
+          <!-- Description -->
+          <p id="farm-view-description">Devworks is a full stack JavaScript Farm located in the heart of Boston that
+            focuses on the
+            technologies you need to get a high paying job as a web developer</p>
+          <!-- Avg cost -->
+          <!-- Products -->
+          <div class="magic">
+            <div class="base-product">
+              <div class="product-card product-card-left">
+                <h4>Title</h4>
+                <div class="img-wrap">
+                  <img src="img/no-photo.png" alt="Product image">
+                </div>
+                <h6>Status</h6>
+              </div>
+              <div class="product-card product-card-right">
+                <div class="product-dscrp">Description: </div>
+                <div class="product-qty">
+                  <label for="quantity">Qty:</label>
+
+                  <input id="quantity" name="quantity" type="number" min="1" max="100" step="1" value="1" required
+                    data-inc="1">
+                </div>
+                <div class="product-price">Price: $</div>
+                <div class="buy-now "><button class="btn btn-outline-info">Buy Now</button></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- Sidebar -->
+        <div class="col-md-4">
+          <!-- Image -->
+          <img id="farm-view-photo" src="img/image_1.jpg" class="img-thumbnail" alt="">
+          <!-- Rating -->
+          <h1 class="text-center my-4"><span id="farm-view-rating"
+              class="badge badge-secondary badge-success rounded-circle p-3"></span>
+            Rating</h1>
+          <!-- Buttons -->
+          <a href="#" class="btn btn-dark btn-block my-3 farm-view-read"><i class="fas fa-comments"></i> Read
+            Reviews</a>
+          <a href="#" class="btn btn-light btn-block my-3 farm-view-write"><i class="fas fa-pencil-alt"></i>
+            Write a Review</a>
+          <a href="#" id="farm-view-website" class="btn btn-secondary btn-block my-3"><i class="fas fa-globe"></i>
+            Visit Website</a>
+          <!-- Map -->
+          <iframe id="farm-view-map" allowfullscreen="" src="#" height="300"></iframe>
+          <!-- Perks -->
+          <ul class="list-group list-group-flush custom-mt">
+            <li id="farm-view-meat" class="list-group-item"><i class="fas fa-check text-success"></i> Meat </li>
+            <li id="farm-view-delivery" class="list-group-item"><i class="fas fa-check text-danger"></i> Delivery </li>
+            <li id="farm-view-pickup" class="list-group-item"><i class="fas fa-times text-danger"></i> Pickup </li>
+            <li id="farm-view-storage" class="list-group-item"><i class="fas fa-check text-success"></i> Storage </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Read Review View-->
+  <section class="read-review mt-5">
+    <div class="container">
+      <div class="row">
+        <!-- Main col -->
+        <div class="col-md-8 review-magic">
+          <a class="btn btn-secondary my-3 readReview-farmView"><i class="fas fa-chevron-left"></i> Farm
+            Info</a>
+          <h1 class="mb-4 review-farm-name">DevWorks Farm Reviews</h1>
+          <!-- Reviews -->
+          <div class="card mb-3 base-review">
+            <h5 class="card-header bg-dark text-white review-title">Fantastic Farm</h5>
+            <div class="card-body">
+              <h5 class="card-title">
+                Rating: <span class="text-success review-rating">10</span>
+              </h5>
+              <p class="card-text review-text">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Commodi similique mollitia, praesentium, animi harum officia
+                dolores corporis ex tempore consequuntur dolorem ullam dolorum
+                magnam corrupti quaerat tempora repudiandae! Similique,
+                molestiae. Iste, blanditiis recusandae unde tenetur eius
+                exercitationem rerum a fuga.
+              </p>
+              <p class="text-muted review-user">Writtern By Kevin Smith</p>
+            </div>
+          </div>
+        </div>
+        <!-- Sidebar -->
+        <div class="col-md-4">
+          <!-- Rating -->
+          <h1 class="text-center my-4">
+            <span class="badge badge-secondary badge-success rounded-circle p-3">8.8</span>
+            Rating
+          </h1>
+          <!-- Buttons -->
+          <a href="#" class="btn btn-primary btn-block my-3 readReview-writeReview"><i class="fas fa-pencil-alt"></i>
+            Review This
+            Farm</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Write Review-->
+  <section class="write-review container mt-5">
+    <div class="row">
+      <div class="col-md-8 m-auto">
+        <div class="card bg-white py-2 px-4">
+          <div class="card-body">
+            <a href="#" class="btn btn-link text-secondary my-3 writeReview-farmView"><i
+                class="fas fa-chevron-left"></i> Farm
+              Info</a>
+            <h1 id="write-review-farm-name" class="mb-2">DevWorks Farm</h1>
+            <h3 id="update-review-write-1234567" class="text-primary mb-4">Write a Review</h3>
+            <h3 id="update-review-edit-7654321" class="text-primary mb-4">Edit a Review</h3>
+            <p>
+              You must have purchased from farm to review
+            </p>
+            <form id="write-review-form" onsubmit="return false">
+              <div class="form-group">
+                <label for="write-review-rating">Rating: <span id="write-review-rating-text"
+                    class="text-primary">8</span></label>
+                <input type="range" class="custom-range" min="1" max="10" step="1" value="8" id="write-review-rating" />
+              </div>
+              <div class="form-group">
+                <input id="write-review-title" type="text" name="title" class="form-control" placeholder="Review title"
+                  required />
+              </div>
+              <div class="form-group">
+                <textarea id="write-review-text" name="review" rows="10" class="form-control" placeholder="Your review"
+                  required></textarea>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Submit Review" class="write-review-submit btn btn-dark btn-block" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Manage Farm View-->
+  <section class="manage-farm container mt-5">
+    <div class="row">
+      <div class="col-md-8 m-auto">
+        <div class="card bg-white py-2 px-4">
+          <div class="card-body">
+            <h1 class="mb-4">Manage Farm</h1>
+            <div class="card mb-3">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img id="manage-farm-photo" src="img/image_1.jpg" class="card-img" alt="Farm Image" />
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <a href="#" id="manage-farm-name">Farm Name
+                        <span class="float-right badge badge-success" id="manage-farm-rating">rating</span></a>
+                    </h5>
+                    <span class="badge badge-dark mb-2 manage-farm-address">city, state</span>
+                    <p class="card-text manage-farm-description">
+                      Description
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <form id="farm-photo-form" encType="multipart/form-data" method='post' action="#" class="mb-4">
+              <div class="form-group">
+                <div class="custom-file">
+                  <input accept="image/*" id="manage-farm-photo-inp" type="file" name="file"
+                    class="custom-file-input" />
+                  <label id="manage-farm-photo-label" class="custom-file-label manageFarm-addFarm"
+                    for="manage-farm-photo-inp">Add Farm
+                    Image</label>
+                </div>
+              </div>
+              <input id="manage-farm-photo-upload" type="submit" class="btn btn-light btn-block" value="Upload Image" />
+            </form>
+            <a href="#" class="btn btn-primary btn-block manageFarm-editFarm">Edit Farm Details</a>
+            <a href="#" class="btn btn-primary btn-block manageFarm-addFarm">Add Farm</a>
+            <a href="#" onclick="manageProductsView()"
+              class="btn btn-secondary btn-block manageFarm-manageProducts">Manage
+              Products</a>
+            <a href="#" class="btn btn-danger btn-block manage-farm-delete">Remove Farm</a>
+            <p class=" text-muted mt-5">
+              * You can only add one farm per account.
+            </p>
+            <p class="text-muted">
+              * You must be affiliated with the farm in some way in order to
+              add it to WindMeal.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Manage Reviews-->
+  <section class="manage-reviews container mt-5">
+    <div class="row">
+      <div class="col-md-8 m-auto">
+        <div class="card bg-white py-2 px-4">
+          <div class="card-body">
+            <h1 class="mb-4">Manage Reviews</h1>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Farm</th>
+                  <th scope="col">Rating</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody class="manage-review-table">
+                <tr class="base-manage-review-card">
+                  <td class="manage-review-card-name">Farm Name</td>
+                  <td class="manage-review-card-rating">rating</td>
+                  <td>
+                    <button class="btn btn-secondary manage-review-card-edit"><i class="fas fa-pencil-alt"></i></button>
+                    <button class="btn btn-danger manage-review-card-delete">
+                      <i class=" fas fa-times"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Add Farm View-->
+  <section class="add-farm container mt-5">
+    <h1 class="mb-2 add-farm-context">Add Farm</h1>
+    <p>
+      Important: You must be affiliated with a farm to add to WindMeal
+    </p>
+    <form id="add-farm-form" onsubmit="return false">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card bg-white py-2 px-4">
+            <div class="card-body">
+              <h3>Location & Contact</h3>
+              <p class="text-muted">
+                If multiple locations, use the main or largest
+              </p>
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name" class="form-control add-farm-name" placeholder="Farm Name" required />
+              </div>
+              <div class="form-group">
+                <label>Address</label>
+                <input type="text" name="address" class="form-control add-farm-address" placeholder="Full Address"
+                  required />
+                <small class="form-text text-muted">Street, city, state, etc</small>
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="text" name="phone" class="form-control add-farm-phone" placeholder="Phone" />
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="text" name="email" class="form-control add-farm-email" placeholder="Contact Email" />
+              </div>
+              <div class="form-group">
+                <label>Website</label>
+                <input type="text" name="website" class="form-control add-farm-website" placeholder="Website URL" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card bg-white py-2 px-4">
+            <div class="card-body">
+              <h3>Services & Info</h3>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea name="description" rows="5" class="form-control add-farm-description"
+                  placeholder="Description (What you offer, etc)" maxlength="500"></textarea>
+                <small class="form-text text-muted">No more than 500 characters</small>
+              </div>
+              <label for="add-farm-pickup" style="font-size: 30px;">Select the services you want!
+              </label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="pickup" id="add-farm-pickup" />
+                <label class="form-check-label" for="add-farm-pickup">
+                  Pickup Service
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="storage" id="add-farm-storage" />
+                <label class="form-check-label" for="add-farm-storage">
+                  Storage Service
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="delivery" id="add-farm-delivery" />
+                <label class="form-check-label" for="add-farm-delivery">
+                  Delivery Service
+                </label>
+              </div>
+              <br />
+              <label class="form-check-label">
+                Do you sell Meat?
+              </label>
+              <div class="form-inline">
+                <div class="form-group mx-sm-3 mb-2">
+                  <input class="form-check-input" type="radio" id="add-farm-meat" name="meat" />
+                  <label for="add-farm-meat">Yes</label>
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                  <input class="form-check-input" type="radio" id="no" name="meat" />
+                  <label for="no">No</label>
+                </div>
+              </div>
+              <p class="text-muted my-4">
+                *After you add the farm, you can add the specific products
+                offered
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Submit Farm" class="btn btn-success btn-block my-4" />
+        <a href="#" class="btn btn-danger btn-block mb-4 addFarm-manageFarm">Cancel</a>
+      </div>
+    </form>
+  </section>
+
+
+
+  <!-- Reset Password-->
+  <section class="reset-password container mt-5">
+    <div class="row">
+      <div class="col-md-8 m-auto">
+        <div class="card bg-white py-2 px-4">
+          <div class="card-body">
+            <a href="#" id="reset-to-login">Back to login</a>
+            <h1 class="mb-2">Reset Password</h1>
+            <p> Use this form to reset your password using the registered email address.</p>
+            <form onsubmit="return false" id="reset-password-form">
+              <div class="form-group reset-password-email-input">
+                <label>Enter Email</label>
+                <input type="email" name="email" class="form-control" id="reset-password-email"
+                  placeholder="Email address" required />
+              </div>
+              <div class="form-group reset-password-link-input">
+                <label>Paste reset link</label>
+                <input type="text" name="link" class="form-control" id="reset-password-link"
+                  placeholder="Paste password reset link here" />
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Reset Password" id="reset-password-submit" class="btn btn-dark btn-block" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Update Password-->
+  <section class="update-password container mt-5">
+    <div class="row">
+      <div class="col-md-8 m-auto">
+        <div class="card bg-white py-2 px-4">
+          <div class="card-body">
+            <h1 class="mb-2">Update Password</h1>
+            <form id="update-password-form">
+              <div class="current-password-update-form form-group">
+                <label>Current Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Current Password"
+                  id="current-password-input" />
+              </div>
+              <div class="form-group">
+                <label>New Password</label>
+                <input type="password" name="newPassword" class="form-control" placeholder="New Password"
+                  id="new-password-input" required />
+              </div>
+              <div class="form-group">
+                <label>Confirm New Password</label>
+                <input type="password" name="newPassword2" class="form-control" placeholder="Confirm New Password"
+                  id="new-password-confirm-input" required />
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Update Password" class="btn btn-dark btn-block" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!--Manage Account-->
+  <section class="manage-account container mt-5">
+    <div class="row">
+      <div class="col-md-8 m-auto">
+        <div class="card bg-white py-2 px-4">
+          <div class="card-body">
+            <h1 class="mb-2">Manage Account</h1>
+            <form id="update-account-details-form" onsubmit="return false">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="title" class="form-control" placeholder="Name"
+                  id="manage-account-name-input" />
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Email"
+                  id="manage-account-email-input" />
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-6">
+                    <input type="submit" value="Save" class="btn btn-success btn-block" />
+                  </div>
+                  <div class="col-md-6">
+                    <a href="#" id="manage-account-update" class="btn btn-secondary btn-block">Update Password</a>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!--Manage Products-->
+  <section class="manage-products container mt-5">
+    <div class="row">
+      <div class="col-md-8 m-auto">
+        <div class="card bg-white py-2 px-4">
+          <div class="card-body">
+            <a href="#" onclick="manageFarmView()" class="btn btn-link text-secondary my-3"><i
+                class="fas fa-chevron-left"></i>
+              Manage Farm</a>
+            <h1 class="mb-4">Manage Products</h1>
+            <div class="card mb-3">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="img/image_1.jpg" class="card-img" alt="..." />
+                </div>
+                <div class=" col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <a href="#" onclick="manageFarmView()" id="manage-products-farm-name">Farm Name
+                        <span class="float-right badge badge-success">rating</span></a>
+                    </h5>
+                    <span class="badge badge-dark mb-2 manage-products-farm-address">city, state</span>
+                    <p class="card-text manage-products-farm-description">
+                      Description
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a href="#" onclick="addProductView('add')" class="btn btn-primary btn-block mb-4">Add Product</a>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Title</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody class="manage-product-table">
+                <tr class="base-manage-product-card">
+                  <td class=".manage-product-card-name">Front End Web Development</td>
+                  <td class="manage-product-card-quantity"></td>
+                  <td class="manage-product-card-price"></td>
+                  <td>
+                    <a href="#" class="btn btn-secondary manage-product-card-edit"><i class="fas fa-pencil-alt"></i></a>
+                    <button class="btn btn-danger manage-product-card-delete">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!--Add Product-->
+  <section class="add-product container mt-5">
+    <div class="row">
+      <div class="col-md-8 m-auto">
+        <div class="card bg-white py-2 px-4">
+          <div class="card-body">
+            <a href="#" onclick="manageProductsView()" class="btn btn-link text-secondary my-3"><i
+                class="fas fa-chevron-left"></i>
+              Manage Products</a>
+            <h1 id="add-product-farm-name" class="mb-2">Farm Name</h1>
+            <h3 id="add-product-context-1234567" class="text-primary mb-4">Add Product</h3>
+            <form id="add-product-form" onsubmit="return false">
+              <div class="form-group">
+                <label>Product Title</label>
+                <input id="add-product-title" type="text" name="title" class="form-control" placeholder="Title"
+                  required />
+              </div>
+              <div class="form-group">
+                <label>Sell By</label>
+
+                <input id="add-product-expiry" type="date" name="expiry" class="form-control" required />
+                <small class="form-text text-muted">Enter the last date on which product must be sold</small>
+              </div>
+              <div class="form-group">
+                <label>Product Price</label>
+                <input id="add-product-price" type="number" name="price" placeholder="price per pound"
+                  class="form-control" required />
+                <small class="form-text text-muted">USD Currency</small>
+              </div>
+              <div class="form-group">
+                <label>Product Quantity</label>
+                <input id="add-product-quantity" type="number" name="quantity" placeholder="qty." class="form-control"
+                  required />
+                <small class="form-text text-muted">Only enter quantity currently available in pounds</small>
+              </div>
+              <label>Product Photo</label>
+              <div class="input-group">
+                <div class="custom-file">
+                  <input id="add-product-photo" type="file" accept="image/*" name="photo" class="custom-file-input"
+                    required>
+                  <label class="custom-file-label" for="add-product-photo">Choose file</label>
+                </div>
+              </div>
+              <br />
+              <div class="form-group">
+                <textarea id="add-product-description" name="description" rows="5" class="form-control"
+                  placeholder="Product description summary" maxlength="500"></textarea>
+                <small class="form-text text-muted">No more than 500 characters</small>
+              </div>
+              <div class="form-group custom-mt">
+                <input type="submit" value="Add Product" class="btn btn-dark btn-block add-product-submit" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"
+    integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn"
+    crossorigin="anonymous"></script>
+
+
+  <script>
+    $(document).ready(function () {
+      $('#update-review-wite-1234567').hide();
+      $('#update-review-edit-7654321').hide();
+      $('#write-review-rating-text').html($('#write-review-rating').prop('value'));
+      $('.base-farm').hide();
+      $('.base-manage-product-card').hide();
+      $('.manage-products').hide();
+      $('.manage-account').hide();
+      $('.update-password').hide();
+      $('.userNav').hide();
+      $('.base-product').hide();
+      $('.base-manage-review-card').hide();
+      $('.base-review').hide();
+      $('.farm').hide();
+      $('.add-farm').hide();
+      $('.add-product').hide();
+      $('.read-review').hide();
+      $('.write-review').hide();
+      $('.manage-farm').hide();
+      $('.manage-reviews').hide();
+      $('.reset-password').hide();
+      $('.login').hide();
+      $('.browse').hide();
+      $('.register').hide();
+      $('.homepageNav').show();
+      $('.showcase').show();
+
+      $('.showcase-loginView').on('click', function () {
+        loginView();
+      });
+      $('#reset-to-login').on('click', function () {
+        loginView();
+      });
+      $('#login-to-reset').on('click', function () {
+        passwordResetView();
+      });
+
+      $('.farm-title').on('click', function () {
+        let farmId = $(this).prop('id').split('Title')[0];
+        farmView(farmId);
+
+      });
+
+      $('.farm-view-read').on('click', function () {
+        let farmId = $(this).prop('id').split('Read')[0];
+        console.log(farmId);
+        reviewRead(farmId);
+      });
+
+      $('.readReview-farmView').on('click', function () {
+        let farmId = $(this).prop('id').split('SwitchView')[0];
+        farmView(farmId);
+      });
+
+      $('.writeReview-farmView').on('click', function () {
+        let farmId = $(this).prop('id').split('SwitchView')[0];
+        console.log(farmId);
+        farmView(farmId);
+      });
+
+      $('.manageFarm-addFarm').on('click', function () {
+        addFarmView('add');
+      });
+
+      $('.manageFarm-editFarm').on('click', function () {
+        addFarmView('edit');
+      });
+
+      $('.readReview-writeReview').on('click', function () {
+        let farmId = $(this).prop('id').split('SwitchView')[0];
+        let farmName = $(this).prop('name').split('SwitchView')[0];
+        reviewWrite('add', farmId, farmName);
+
+      });
+      $('.addFarm-manageFarm').on('click', function () {
+        manageFarmView();
+      })
+
+      $('.farm-view-write').on('click', function () {
+        let farmId = $(this).prop('id').split('Write')[0];
+        let farmName = $(this).prop('name').split('Write')[0];
+        reviewWrite('add', farmId, farmName);
+      });
+
+
+
+      $('#write-review-rating').on('input', function () {
+        $('#write-review-rating-text').html($(this).val());
+      });
+
+      $('#manage-account-update').on('click', function () {
+        updatePasswordView('update');
+      });
+
+      $('#manage-farm-dropdown').on('click', () => {
+        manageFarmView();
+      });
+
+      $('#manage-reviews-dropdown').on('click', () => {
+        reviewManage();
+      });
+
+      $('#manage-account-dropdown').on('click', () => {
+        manageAccountView();
+      });
+
+      $('.showcase-farmsView').on('click', function () {
+        farmsView(null);
+      });
+
+      $('.showcase-registerView').on('click', function () {
+        registerView();
+      });
+
+      $('.manage-review-card-delete').on('click', function () {
+        let reviewId = $(this).prop('id').split('Delete')[0];
+        $(this).closest('.manage-review-card').hide();
+        deleteReview(reviewId);
+      });
+
+      $('.manage-review-card-edit').on('click', function () {
+        let reviewId = $(this).prop('id').split('Edit')[0];
+        // $(this).closest('.manage-review-card').hide();
+        getSingleReview(reviewId, 'edit');
+        let farmId = $(this).closest('tr').find('.manage-review-card-name').prop('id').split('Title')[0];
+        let farmName = $(this).closest('tr').find('.manage-review-card-name').html();
+        $('.write-review-submit').prop('id', reviewId + 'Submit');
+
+        reviewWrite('edit', farmId, farmName);
+      });
+
+      $('.manage-product-card-delete').on('click', function () {
+        let productId = $(this).prop('id').split('Delete')[0];
+        $(this).closest('.manage-product-card').hide();
+        deleteProduct(productId);
+      });
+
+
+      $('.manage-product-card-edit').on('click', function () {
+        let productId = $(this).prop('id').split('Edit')[0];
+        // $(this).closest('.manage-review-card').hide();
+        getSingleProduct(productId, 'edit');
+        $('.add-product-submit').prop('id', productId + 'Submit');
+        addProductView('edit');
+      });
+
+
+      $('.logout').on('click', function () {
+        logout();
+      });
+
+      $('.manage-farm-delete').on('click', function () {
+        deleteFarm();
+      });
+
+      $('#login-form').submit(function (event) {
+        // console.log('submit!!!!!!')
+        event.preventDefault();
+        login();
+      });
+
+      $('#register-form').submit(function (event) {
+        // console.log('submit!!!!!!')
+        event.preventDefault();
+        register();
+      });
+
+      $('#update-account-details-form').submit(function (event) {
+        updateUserDetails();
+      });
+
+      $('#reset-password-form').submit(function (event) {
+        event.preventDefault();
+        if ($('#reset-password-link').val()) {
+          getResetToken($('#reset-password-link').val());
+        } else {
+          forgotPassword();
+        }
+      });
+
+      $('#update-password-form').submit(function (event) {
+        event.preventDefault();
+        let context = $('.update-password').data('context');
+        if (context === 'reset') {
+          resetPassword();
+        } else if (context === 'update') {
+          updatePassword(context);
+        }
+      });
+
+      $('#add-farm-form').submit(function (event) {
+        // console.log('submit!!!!!!')
+        event.preventDefault();
+        if ($('.add-farm').data('context') === 'add') {
+          createFarm();
+        } else if ($('.add-farm').data('context') === 'edit') {
+          updateFarm();
+        }
+      });
+
+      $('#add-product-form').submit(function (event) {
+        console.log('add Product submit!!!!!!')
+        event.preventDefault();
+        if ($('.add-product').data('context') === 'add') {
+          createProduct();
+        } else if ($('.add-product').data('context') === 'edit') {
+          let productId = $('.add-product-submit').prop('id').split('Submit')[0];
+          updateProduct(productId);
+        }
+      });
+
+      $('#write-review-form').submit(function (event) {
+        // console.log('submit!!!!!!')
+        event.preventDefault();
+        let farmId = $('.write-review-submit').prop('id').split('Submit')[0];
+        if ($('.write-review').data('context') === 'add') {
+          addReview(farmId);
+        } else if ($('.write-review').data('context') === 'edit') {
+          let reviewId = $('.write-review-submit').prop('id').split('Submit')[0];
+          updateReview(reviewId);
+        }
+      });
+    });
+
+    $('#filter-form').submit(function (event) {
+      event.preventDefault();
+      farmsView(getFilterStr());
+    });
+
+    $('#next-page-link').on('click', function () {
+      let next = $(this).data('data');
+      if (!next) {
+        return;
+      }
+      let filterStr = getFilterStr() + '&page=' + next.page;
+      farmsView(filterStr);
+    });
+
+    $('#previous-page-link').on('click', function () {
+      let previous = $(this).data('data');
+      if (!previous) {
+        return;
+      }
+      let filterStr = getFilterStr() + '&page=' + previous.page;
+      farmsView(filterStr);
+    });
+
+
+    $('#farm-photo-form').ajaxForm({
+      url: `https://windmeal.live/api/v1/farms/${$('#manage-farm-photo-inp').data('farmID')}/photo`,
+      type: 'post',
+      headers: { Authorization: $('#farm-photo-form').data('token') },
+      contentType:
+        'multipart/form-data;boundary=----WebKitFormBoundaryuTWE5QPFKyFM3VoD',
+    });
+
+
+    $('#farm-view-find-form').submit(function (event) {
+      event.preventDefault();
+      let zipcode = $('#farm-view-zipcode').val();
+      let miles = $('#farm-view-miles').val();
+      findFarm(zipcode, miles);
+    });
+
+
+    $('#manage-farm-photo-inp').on('change', function (event) {
+      let fileName = $(this).val().split('\\')[$(this).val().split('\\').length - 1];
+      $('#manage-farm-photo-label').html(fileName);
+      let farmID = $('#manage-farm-photo-inp').data('farmID');
+
+      $('#farm-photo-form').attr('action', 'https://windmeal.live/api/v1/farms/' + farmID + '/photo',);
+      console.log(event.target.files);
+
+      updateImage(this);
+      addPhotoToFarm(event.target.files);
+    })
+
+
+    /*
+     * this swallows backspace keys on any non-input element.
+     * stops backspace -> back
+     */
+    var rx = /INPUT|SELECT|TEXTAREA/i;
+
+    $(document).bind("keydown keypress", function (e) {
+      if (e.which == 8) { // 8 == backspace
+        if (!rx.test(e.target.tagName) || e.target.disabled || e.target.readOnly) {
+          e.preventDefault();
+        }
+      }
+    });
+    function disableBackButton() {
+      setTimeout("preventPageLoad()", 1);
+    }
+
+    function preventPageLoad() {
+      try {
+        history.forward();
+      } catch (e) {
+      }
+      // Try again every 200 milisecs. 
+      setTimeout("preventPageLoad()", 200);
+    }
+    disableBackButton();
+
+
+    function updateImage(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#manage-farm-photo').attr('src', reader.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+        // console.log(input.files[0]);
+      }
+    }
+
+    function getFilterStr() {
+      let ratingFilter = '&averageRating[gt]=';
+      let categoryFilter;
+      if ($('#filter-form-category').val() !== 'any') {
+        categoryFilter = $('#filter-form-category').val() + '=true';
+      } else {
+        categoryFilter = '';
+      }
+      if ($('#filter-form-rating').val() !== 'any') {
+        ratingFilter += $('#filter-form-rating').val();
+      } else {
+        ratingFilter += '0';
+      }
+
+      let filterStr = ratingFilter + '&' + categoryFilter;
+      return filterStr;
+    }
+
+  </script>
+</body>
+
+</html>
