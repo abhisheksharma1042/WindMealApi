@@ -53,7 +53,7 @@ exports.getProduct = asyncHandler(async (req, res, next) => {
 //@route  PUT /api/v1/products/:id
 //@access Private
 exports.updateProduct = asyncHandler(async (req, res, next) => {
-  let product = await Product.findById(req.params.id);
+  let product = await Product.findById(req.params.id).populated('farm', 'name');
 
   if (!product) {
     return next(
