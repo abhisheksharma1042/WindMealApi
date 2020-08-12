@@ -69,13 +69,13 @@ app.use(cors());
 // Rate limiting
 const resetPasswordLimiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 mins
-  max: 1000,
+  max: 100,
 });
 
 // Rate limiting
 const forgotPasswordLimiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 mins
-  max: 1000,
+  max: 100,
 });
 
 app.use('/api/v1/auth/forgotpassword', forgotPasswordLimiter);
