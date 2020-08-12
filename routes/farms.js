@@ -38,7 +38,10 @@ router
 
 router.route('/radius/:zipcode/:miles').get(findFarmInRadius);
 
-router.route('/:id/photo').put(protect, authorize('farmer'), addPhotoToFarm);
+router
+  .route('/:id/photo')
+  .put(protect, authorize('farmer'), addPhotoToFarm)
+  .post(protect, authorize('farmer'), addPhotoToFarm);
 router
   .route('/:id/publishers')
   .get(protect, authorize('farmer'), getPublishersForFarm);
