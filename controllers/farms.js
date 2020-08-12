@@ -167,7 +167,7 @@ exports.addPhotoToFarm = asyncHandler(async (req, res, next) => {
 //@desc   Get Farms in 'miles' radius of 'zipcode'
 //@route  GET /api/v1/farms/radius/:zipcode/:miles
 //@access Private
-exports.findFarmInRadius = async (req, res, next) => {
+exports.findFarmInRadius = asyncHandler(async (req, res, next) => {
   const { zipcode, miles } = req.params;
 
   // Get lat/lng from geocoder
@@ -191,7 +191,7 @@ exports.findFarmInRadius = async (req, res, next) => {
     count: farms.length,
     data: farms,
   });
-};
+});
 
 //@desc   Get publishers for Farm
 //@route  GET /api/v1/farms/:id/publishers
