@@ -227,6 +227,29 @@ exports.resetPassword = asyncHandler(async (req, res, next) => {
   sendTokenResponse(user, 200, res);
 });
 
+//@desc   Send encrypted token password back
+//@route  GET /api/v1/auth/resetpassword/:resetToken
+//@access Private
+exports.getResetToken = asyncHandler(async (req, res, next) => {
+  //Get hashed token
+  const resetPasswordToken = crypto
+    .createHash('sha256')
+    .update(req.params.resetToken)
+    .digest('hex');
+
+  const user = await User.findOne({
+    resetPasswordToken,
+    resetPasswordExpire: { $gt: Date.now() },
+  });
+
+  if (!user) {
+    return next(new ErrorResponse('Invalid token', 400));
+  }
+  let resetToken = req.params.resetToken;
+
+  res.status(200).json({ success: true, resetToken });
+});
+
 // Get token from model and create cookie and send response
 const sendTokenResponse = (user, statusCode, res) => {
   // Create token
