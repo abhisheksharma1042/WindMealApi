@@ -129,6 +129,7 @@ exports.addPhotoToFarm = asyncHandler(async (req, res, next) => {
     );
   }
 
+  console.log(req);
   if (!req.files) {
     return next(new ErrorResponse(`Please upload a file`, 404));
   }
