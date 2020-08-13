@@ -2,7 +2,7 @@
       Author: Abhishek Sharma
       FileName: style.css
       Class: CSC 337
-      Description: styling for Final project front-end.
+      Description: Describes all iterraction with front-end and makes calls to API
 ====================================================================== */
 
 async function tooglePasswordVisibility() {
@@ -27,13 +27,10 @@ async function forgotPassword() {
     data: JSON.stringify(msg),
     headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` },
     success: function (res, status, xhr) {
-      //   console.log(res);
       alert(res.info);
-      //   currentUser();
-      // pasteLinkView();
     },
     error: function (error) {
-      //   console.log(error);
+      //
       alert(error.responseJSON.error);
     },
   });
@@ -46,7 +43,7 @@ async function currentUser() {
     headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` },
     complete: function (result) {
       if (result.responseJSON.success) {
-        // console.log(JSON.stringify(result.responseJSON.data.reviews));
+        //
         sessionStorage.setItem('user-role', result.responseJSON.data.user.role);
         sessionStorage.setItem('user-name', result.responseJSON.data.user.name);
         sessionStorage.setItem(
@@ -74,7 +71,7 @@ async function login() {
     email: $('#login-email-inp').val(),
     password: $('#login-password-inp').val(),
   };
-  //   console.log(JSON.stringify(msg));
+  //
   $.ajax({
     contentType: 'application/json; charset=utf-8',
     url: 'https://windmeal.live/api/v1/auth/login',
@@ -82,14 +79,14 @@ async function login() {
     data: JSON.stringify(msg),
     success: function (res, status, xhr) {
       sessionStorage.setItem('token', res.token);
-      //   console.log(res);
+      //
       //   alert(res.getAllResponseHeaders());
       alert('User Logged In');
       farmsView();
       currentUser();
     },
     error: function (error) {
-      //   console.log(error);
+      //
       alert(error.responseJSON.error);
       loginView();
     },
@@ -130,14 +127,14 @@ async function register() {
     headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` },
     success: function (res, status, xhr) {
       sessionStorage.setItem('token', res.token);
-      //   console.log(res);
+      //
       //   alert(res.getAllResponseHeaders());
       alert('User Registered and Logged In');
       currentUser();
       farmsView();
     },
     error: function (error) {
-      //   console.log(error);
+      //
       alert(error.responseJSON.error);
       registerView();
     },
@@ -160,7 +157,7 @@ async function resetPassword() {
       }
     },
     error: function (error) {
-      //   console.log(error);
+      //
       alert(error.responseJSON.error);
     },
   });
@@ -223,7 +220,7 @@ async function updatePassword() {
       }
     },
     error: function (error) {
-      //   console.log(error);
+      //
       alert(error.responseJSON.error);
     },
   });
@@ -249,7 +246,7 @@ async function createFarm() {
     phone: $('.add-farm-phone').val(),
     address: $('.add-farm-address').val(),
   };
-  console.log(msg);
+
   //   return;
   $.ajax({
     url: 'https://windmeal.live/api/v1/farms',
@@ -264,7 +261,7 @@ async function createFarm() {
       }
     },
     error: function (error) {
-      //   console.log(error);
+      //
       alert(error.responseJSON.error);
     },
   });
@@ -296,12 +293,12 @@ async function findFarm(zipcode, miles) {
       if (result.success) {
         sessionStorage.setItem('count', result.count);
         setupPagination(result.pagination);
-        console.log(result);
+
         displayFarms(result.data);
       }
     },
     error: function (error) {
-      //   console.log(error);
+      //
       alert(error.responseJSON.error);
     },
   });
@@ -325,7 +322,7 @@ async function getAllFarms(filter) {
       }
     },
     error: function (error) {
-      //   console.log(error);
+      //
       alert(error.responseJSON.error);
     },
   });
@@ -391,7 +388,7 @@ async function updateFarm() {
       }
     },
     error: function (error) {
-      //   console.log(error);
+      //
       alert(error.responseJSON.error);
     },
   });
@@ -411,7 +408,7 @@ async function getFarmPublishers() {
       }
     },
     error: function (error) {
-      //   console.log(error);
+      //
       alert(error.responseJSON.error);
     },
   });
@@ -419,8 +416,6 @@ async function getFarmPublishers() {
 
 async function addPhotoToFarm(file) {
   let id = JSON.parse(sessionStorage.getItem('farm'))[0].id;
-  // console.log(file);
-  // return;
   $.ajax({
     url: 'https://windmeal.live/api/v1/farms/' + id + '/photo',
     method: 'PUT',
@@ -436,7 +431,7 @@ async function addPhotoToFarm(file) {
       }
     },
     error: function (error) {
-      //   console.log(error);
+      //
       alert(error.responseJSON.error);
     },
   });
@@ -461,7 +456,7 @@ async function addPhotoToProduct() {
       }
     },
     error: function (error) {
-      //   console.log(error);
+      //
       alert(error.responseJSON.error);
     },
   });
@@ -486,7 +481,7 @@ async function createProduct() {
       }
     },
     error: function (error) {
-      //   console.log(error);
+      //
       alert(error.responseJSON.error);
     },
   });
@@ -549,7 +544,7 @@ async function getSingleProduct(id, context) {
       }
     },
     error: function (error) {
-      //   console.log(error);
+      //
       alert(error.responseJSON.error);
     },
   });
@@ -586,7 +581,7 @@ async function updateProduct(id) {
       }
     },
     error: function (error) {
-      //   console.log(error);
+      //
       alert(error.responseJSON.error);
     },
   });
@@ -607,7 +602,7 @@ async function addReview(id) {
     data: JSON.stringify(msg),
     headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` },
     complete: function (event) {
-      //   console.log(event);
+      //
       if (event.responseJSON.success) {
         alert('Review Added');
         currentUser();
@@ -634,7 +629,6 @@ async function updateReview(id) {
     msg.rating = $('#write-review-rating').val();
   }
 
-  console.log(msg);
   $.ajax({
     contentType: 'application/json; charset=utf-8',
     url: 'https://windmeal.live/api/v1/reviews/' + id,
@@ -742,7 +736,7 @@ async function displayFarms(listings) {
   $('.farm-card').remove();
   if (listings.length > 0) {
     $.each(listings, function (index, item) {
-      //   console.log(item.averageRating);
+      //
       $newfarm = $('.base-farm').clone(true).toggleClass('farm-card');
       $newfarm.removeClass('base-farm');
       $newfarm
@@ -778,7 +772,7 @@ async function displayProducts(listings) {
   $('.product').remove();
   if (listings.length > 0) {
     $.each(listings, function (index, item) {
-      //   console.log(item);
+      //
       $newproduct = $('.base-product').clone(true).toggleClass('product');
       $newproduct.removeClass('base-product');
       $newproduct
@@ -886,7 +880,7 @@ async function updateReadReviewView(reviews) {
   $('.review').remove();
   if (reviews.length > 0) {
     $.each(reviews, function (index, review) {
-      //   console.log(review);
+      //
       $newreview = $('.base-review').clone(true).toggleClass('review');
       $newreview.removeClass('base-review');
       $newreview
@@ -921,7 +915,7 @@ async function updateManageReviewsView(reviews) {
   $('.manage-review-card').remove();
   if (reviews.length > 0) {
     $.each(reviews, function (index, review) {
-      //   console.log(review);
+      //
       $newreview = $('.base-manage-review-card')
         .clone(true)
         .toggleClass('manage-review-card');
@@ -957,7 +951,7 @@ async function updateManageProductsView(products) {
   $('.manage-product-card').remove();
   if (products.length > 0) {
     $.each(products, function (index, product) {
-      //   console.log(product);
+      //
       $newproduct = $('.base-manage-product-card')
         .clone(true)
         .toggleClass('manage-product-card');
@@ -1001,9 +995,8 @@ async function updateManageFarmView(farm) {
     farm.name +
       '<span class="float-right badge badge-success" id="manage-farm-rating">rating</span>'
   );
-  //   console.log(farm.averageRating);
+  //
   if (farm.averageRating === undefined) {
-    console.log(farm.averageRating);
     $('#manage-farm-rating').html('rating');
   } else {
     $('#manage-farm-rating').html(farm.averageRating);
@@ -1099,7 +1092,6 @@ async function manageFarmView() {
         '<span class="float-right badge badge-success" id="manage-farm-rating">rating</span>'
     );
     if (farm.averageRating === undefined) {
-      console.log(farm.averageRating);
     } else {
       $('#manage-farm-rating').html(farm.averageRating);
     }
@@ -1221,7 +1213,7 @@ async function reviewRead(farmID) {
 }
 
 async function reviewWrite(context, farmId, farmName) {
-  // console.log(farmId + ' ' + farmName);
+  //
   if (context === 'edit') {
     $('#update-review-write-1234567').hide();
     $('#update-review-edit-7654321').show();
@@ -1232,7 +1224,7 @@ async function reviewWrite(context, farmId, farmName) {
     updateReviewEdit(null, 'add');
   }
   currentUser();
-  console.log(sessionStorage.getItem('user-role'));
+
   if (sessionStorage.getItem('user-role')) {
     if (sessionStorage.getItem('user-role') !== 'client') {
       alert('Not authorized to access route');
@@ -1264,7 +1256,7 @@ async function reviewWrite(context, farmId, farmName) {
 
 async function reviewManage() {
   currentUser();
-  console.log(sessionStorage.getItem('user-role'));
+
   if (sessionStorage.getItem('user-role')) {
     if (sessionStorage.getItem('user-role') !== 'client') {
       alert('Not authorized to access route');
@@ -1463,7 +1455,6 @@ async function manageAccountView() {
 
 async function manageProductsView() {
   currentUser();
-  // console.log(sessionStorage.getItem('user-role'));
   if (sessionStorage.getItem('user-role')) {
     if (
       sessionStorage.getItem('user-role') !== 'farmer' &&
@@ -1483,7 +1474,6 @@ async function manageProductsView() {
         '<span class="float-right badge badge-success" id="manage-products-farm-rating">rating</span>'
     );
     if (farm.averageRating === undefined) {
-      console.log(farm.averageRating);
     } else {
       $('#manage-products-farm-rating').html(farm.averageRating);
     }
@@ -1515,7 +1505,7 @@ async function manageProductsView() {
 async function addProductView(context) {
   currentUser();
   let farm = JSON.parse(sessionStorage.getItem('farm'))[0];
-  // console.log(sessionStorage.getItem('user-role'));
+
   if (sessionStorage.getItem('user-role')) {
     if (
       sessionStorage.getItem('user-role') !== 'farmer' &&

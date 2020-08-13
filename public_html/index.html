@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="css/bootstrap.css" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/product-card.css" />
+  <link rel="stylesheet" href="css/customStyle.css" />
   <title>WindMeal | Find a a local Farm</title>
 </head>
 
@@ -499,7 +500,7 @@
                 </div>
               </div>
             </div>
-            <form id="farm-photo-form" encType="multipart/form-data" method='post' action="#" class="mb-4">
+            <form id="farm-photo-form" encType="multipart/form-data" action="#" class="mb-4">
               <div class="form-group">
                 <div class="custom-file">
                   <input accept="image/*" id="manage-farm-photo-inp" type="file" name="file"
@@ -955,7 +956,6 @@
 
       $('.farm-view-read').on('click', function () {
         let farmId = $(this).prop('id').split('Read')[0];
-        console.log(farmId);
         reviewRead(farmId);
       });
 
@@ -966,7 +966,6 @@
 
       $('.writeReview-farmView').on('click', function () {
         let farmId = $(this).prop('id').split('SwitchView')[0];
-        console.log(farmId);
         farmView(farmId);
       });
 
@@ -1066,13 +1065,11 @@
       });
 
       $('#login-form').submit(function (event) {
-        // console.log('submit!!!!!!')
         event.preventDefault();
         login();
       });
 
       $('#register-form').submit(function (event) {
-        // console.log('submit!!!!!!')
         event.preventDefault();
         register();
       });
@@ -1101,7 +1098,6 @@
       });
 
       $('#add-farm-form').submit(function (event) {
-        // console.log('submit!!!!!!')
         event.preventDefault();
         if ($('.add-farm').data('context') === 'add') {
           createFarm();
@@ -1111,7 +1107,7 @@
       });
 
       $('#add-product-form').submit(function (event) {
-        console.log('add Product submit!!!!!!')
+
         event.preventDefault();
         if ($('.add-product').data('context') === 'add') {
           createProduct();
@@ -1122,7 +1118,6 @@
       });
 
       $('#write-review-form').submit(function (event) {
-        // console.log('submit!!!!!!')
         event.preventDefault();
         let farmId = $('.write-review-submit').prop('id').split('Submit')[0];
         if ($('.write-review').data('context') === 'add') {
@@ -1158,13 +1153,13 @@
     });
 
 
-    $('#farm-photo-form').ajaxForm({
-      url: `https://windmeal.live/api/v1/farms/${$('#manage-farm-photo-inp').data('farmID')}/photo`,
-      type: 'post',
-      headers: { Authorization: $('#farm-photo-form').data('token') },
-      contentType:
-        'multipart/form-data;boundary=----WebKitFormBoundaryuTWE5QPFKyFM3VoD',
-    });
+    // $('#farm-photo-form').ajaxForm({
+    //   url: `https://windmeal.live/api/v1/farms/${$('#manage-farm-photo-inp').data('farmID')}/photo`,
+    //   type: 'post',
+    //   headers: { Authorization: $('#farm-photo-form').data('token') },
+    //   contentType:
+    //     'multipart/form-data;boundary=----WebKitFormBoundaryuTWE5QPFKyFM3VoD',
+    // });
 
 
     $('#farm-view-find-form').submit(function (event) {
@@ -1180,8 +1175,7 @@
       $('#manage-farm-photo-label').html(fileName);
       let farmID = $('#manage-farm-photo-inp').data('farmID');
 
-      $('#farm-photo-form').attr('action', 'https://windmeal.live/api/v1/farms/' + farmID + '/photo',);
-      console.log(event.target.files);
+      // $('#farm-photo-form').attr('action', 'https://windmeal.live/api/v1/farms/' + farmID + '/photo',);
 
       updateImage(this);
       addPhotoToFarm(event.target.files);
@@ -1225,7 +1219,7 @@
         }
 
         reader.readAsDataURL(input.files[0]);
-        // console.log(input.files[0]);
+        //
       }
     }
 
