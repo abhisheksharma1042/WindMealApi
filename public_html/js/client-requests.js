@@ -1209,6 +1209,7 @@ async function loginView() {
 }
 
 async function reviewRead(farmID) {
+  getReviewsOfFarm(farmID);
   $('.farm').hide();
   $('.read-review').show();
   $('.write-review').hide();
@@ -1226,7 +1227,6 @@ async function reviewRead(farmID) {
   $('.manage-products').hide();
   $('.manage-reviews').hide();
   $('.register').hide();
-  getReviewsOfFarm(farmID);
 }
 
 async function reviewWrite(context, farmId, farmName) {
