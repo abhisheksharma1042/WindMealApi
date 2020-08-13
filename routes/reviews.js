@@ -19,7 +19,7 @@ router
   .get(
     advancedResults(Review, {
       path: 'farm user',
-      select: 'name description',
+      select: 'name description averageRating',
     }),
     getReviews
   )

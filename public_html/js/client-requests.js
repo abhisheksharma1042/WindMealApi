@@ -756,6 +756,8 @@ async function displayFarms(listings) {
         .html(item.location.city + ', ' + item.location.state);
       $newfarm
         .find('img')
+        .addClass('img-fluid')
+        .css({ 'max-width': '100%', height: 'auto' })
         .prop('id', item._id + 'Img')
         .attr('src', 'img/' + item.photo);
       $newfarm
@@ -788,6 +790,8 @@ async function displayProducts(listings) {
         .html(item.status);
       $newproduct
         .find('img')
+        .addClass('img-fluid')
+        .css({ 'max-width': '100%', height: 'auto' })
         .prop('id', item._id + 'Img')
         .attr('src', 'img/' + item.photo);
       $newproduct.find('input').prop('id', item._id + 'Qty');
@@ -873,6 +877,11 @@ async function updateFarmView(farm) {
  *Description: Helper function to display products.
  */
 async function updateReadReviewView(reviews) {
+  if (!reviews.length > 0) {
+    alert('No Reviews');
+    farmsView();
+    return;
+  }
   $('.readReview-farmView').prop('id', reviews[0].farm._id + 'SwitchView');
   $('.readReview-writeReview').prop('id', reviews[0].farm._id + 'SwitchView');
   $('.readReview-writeReview').prop(
@@ -880,7 +889,7 @@ async function updateReadReviewView(reviews) {
     reviews[0].farm.name + 'SwitchView'
   );
   $('.review-farm-name').html(reviews[0].farm.name + ' Reviews');
-  $('.review-rating').html(reviews[0].farm.averageRating + '');
+  $('.review-farm-rating').html(reviews[0].farm.averageRating + '');
   $('.review').remove();
   if (reviews.length > 0) {
     $.each(reviews, function (index, review) {
