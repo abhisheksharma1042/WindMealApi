@@ -962,7 +962,7 @@ async function updateManageProductsView(products) {
       $newproduct
         .find('.manage-product-card-name')
         .prop('id', product.farm._id + 'Title')
-        .html(product.farm.name);
+        .html(product.title);
       $newproduct
         .find('.manage-product-card-delete')
         .prop('id', product._id + 'Delete');
