@@ -5,13 +5,13 @@
       Description: styling for Final project front-end.
 ====================================================================== */
 
-.magic {
+/* .magic {
   position: absolute;
   height: 92.3%;
   width: 87%;
   background-color: transparent;
   overflow-y: scroll;
-}
+} */
 
 .base-product,
 .product {
@@ -37,7 +37,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: 30%;
-  background: linear-gradient(180deg, #f5f1da, #e3dfc8);
+  background: #f5f1da;
   text-align: center;
   border-bottom-left-radius: 15px;
   border-top-left-radius: 15px;
@@ -49,7 +49,7 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  background: linear-gradient(180deg, #f5f1da, #e3dfc8);
+  background: #f5f1da;
   border-bottom-right-radius: 15px;
   border-top-right-radius: 15px;
   text-align: left;

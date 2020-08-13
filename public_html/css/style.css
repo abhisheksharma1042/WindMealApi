@@ -5,8 +5,23 @@
       Description: styling for Final project front-end.
 ====================================================================== */
 
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0px; /* remove scrollbar space /
+  background: transparent; / optional: just make scrollbar invisible /
+  }
+  / optional: show position indicator in red */
+}
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
+}
+
 img {
-  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 .showcase {
   position: relative;

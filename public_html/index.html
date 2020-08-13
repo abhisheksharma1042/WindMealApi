@@ -320,37 +320,45 @@
   </section>
 
 
-  <!-- Farm View: Need add filtering-->
+  <!-- Farm View-->
   <section class="farm mt-5">
     <div class="container">
       <div class="row">
 
         <div class="col-md-8">
-          <h1 id="farm-view-title">DevWorks Farm</h1>
+          <h1 id="farm-view-title">Farm Name</h1>
           <!-- Description -->
-          <p id="farm-view-description">Devworks is a full stack JavaScript Farm located in the heart of Boston that
-            focuses on the
-            technologies you need to get a high paying job as a web developer</p>
-          <!-- Avg cost -->
+          <p id="farm-view-description">Farm Description</p>
           <!-- Products -->
-          <div class="magic">
-            <div class="base-product">
-              <div class="product-card product-card-left">
-                <h4>Title</h4>
-                <div class="img-wrap">
-                  <img src="img/no-photo.png" alt="Product image">
-                </div>
-                <h6>Status</h6>
-              </div>
-              <div class="product-card product-card-right">
-                <div class="product-dscrp">Description: </div>
-                <div class="product-qty">
-                  <label for="quantity">Qty:</label>
+          <div class="magic container">
+            <div class="base-product card-group">
+              <div class="product-card product-card-left card" style="max-width:30%">
+                <div class="card-body">
+                  <h4 class="card-title">Title</h4>
 
-                  <input id="quantity" name="quantity" type="number" min="1" max="100" step="1" value="1" required
-                    data-inc="1">
+                  <img class="card-img" style="max-width: 100%; height:auto" src="img/no-photo.png" alt="Product image">
+
+                  <h6 class="text-muted">Status</h6>
                 </div>
-                <div class="product-price">Price: $</div>
+              </div>
+              <div class="product-card card product-card-right">
+                <div class="product-dscrp card-title">Description: </div>
+                <div class="product-qty">
+                  <div class="input-group mb-3" style="max-width:40%">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Qty</span>
+                    </div>
+                    <input id="quantity" type="number" min="1" max="100" step="1" value="1" required data-inc="1"
+                      class="form-control" aria-label="Amount in pounds">
+                    <div class="input-group-append">
+                      <span class="input-group-text">lb</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="product-price card-title">Price: $ <br />
+                  <p class="card-text"><small class="text-muted">price per pound</small></p>
+                </div>
+
                 <div class="buy-now "><button class="btn btn-outline-info">Buy Now</button></div>
               </div>
             </div>
@@ -360,7 +368,8 @@
         <!-- Sidebar -->
         <div class="col-md-4">
           <!-- Image -->
-          <img id="farm-view-photo" src="img/image_1.jpg" class="img-thumbnail" alt="">
+          <img id="farm-view-photo" src="img/image_1.jpg" class="img-fluid" style="max-width: 100%; height:auto"
+            alt="Farm Image">
           <!-- Rating -->
           <h1 class="text-center my-4"><span id="farm-view-rating"
               class="badge badge-secondary badge-success rounded-circle p-3"></span>
@@ -373,7 +382,9 @@
           <a href="#" id="farm-view-website" class="btn btn-secondary btn-block my-3"><i class="fas fa-globe"></i>
             Visit Website</a>
           <!-- Map -->
-          <iframe id="farm-view-map" allowfullscreen="" src="#" height="300"></iframe>
+          <div class="embed-responsive embed-responsive-4by3">
+            <iframe id="farm-view-map" allowfullscreen="" src="#" height="300"></iframe>
+          </div>
           <!-- Perks -->
           <ul class="list-group list-group-flush custom-mt">
             <li id="farm-view-meat" class="list-group-item"><i class="fas fa-check text-success"></i> Meat </li>
@@ -395,13 +406,13 @@
         <div class="col-md-8 review-magic">
           <a class="btn btn-secondary my-3 readReview-farmView"><i class="fas fa-chevron-left"></i> Farm
             Info</a>
-          <h1 class="mb-4 review-farm-name">DevWorks Farm Reviews</h1>
+          <h1 class="mb-4 review-farm-name">Farm Name Reviews</h1>
           <!-- Reviews -->
           <div class="card mb-3 base-review">
-            <h5 class="card-header bg-dark text-white review-title">Fantastic Farm</h5>
+            <h5 class="card-header bg-dark text-white review-title">Review Title</h5>
             <div class="card-body">
               <h5 class="card-title">
-                Rating: <span class="text-success review-rating">10</span>
+                Rating: <span class="text-success review-rating">rating</span>
               </h5>
               <p class="card-text review-text">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -411,7 +422,7 @@
                 molestiae. Iste, blanditiis recusandae unde tenetur eius
                 exercitationem rerum a fuga.
               </p>
-              <p class="text-muted review-user">Writtern By Kevin Smith</p>
+              <p class="text-muted review-user">Writtern By Name</p>
             </div>
           </div>
         </div>
@@ -419,7 +430,7 @@
         <div class="col-md-4">
           <!-- Rating -->
           <h1 class="text-center my-4">
-            <span class="review-farm-rating badge badge-secondary badge-success rounded-circle p-3">8.8</span>
+            <span class="review-farm-rating badge badge-secondary badge-success rounded-circle p-3">rating</span>
             Rating
           </h1>
           <!-- Buttons -->
@@ -941,6 +952,8 @@
       $('.register').hide();
       $('.homepageNav').show();
       $('.showcase').show();
+
+
 
       $('.showcase-loginView').on('click', function () {
         loginView();

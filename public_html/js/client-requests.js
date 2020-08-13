@@ -1117,10 +1117,6 @@ async function manageFarmView() {
     );
     $('.manage-farm-description').html(farm.description);
     $('#manage-farm-photo-inp').data('farmID', farm.id);
-    $('#farm-photo-form').data(
-      'token',
-      `Bearer ${sessionStorage.getItem('token')}`
-    );
   }
   if (sessionStorage.getItem('user-role')) {
     if (sessionStorage.getItem('user-role') !== 'farmer') {
