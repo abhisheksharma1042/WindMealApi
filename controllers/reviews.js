@@ -11,7 +11,7 @@ exports.getReviews = asyncHandler(async (req, res, next) => {
   if (req.params.farmId) {
     const reviews = await Review.find({ farm: req.params.farmId }).populate({
       path: 'farm user',
-      select: 'name description',
+      select: 'name description averageRating',
     });
 
     return res.status(200).json({
