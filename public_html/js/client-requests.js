@@ -479,7 +479,7 @@ async function createProduct() {
     data: JSON.stringify(msg),
     success: function (result) {
       if (result.success) {
-        alert('User Added');
+        alert('Product Created');
       }
     },
     error: function (error) {
