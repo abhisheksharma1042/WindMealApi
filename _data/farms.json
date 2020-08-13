@@ -2,41 +2,45 @@
   {
     "_id": "5d713995b721c3bb38c1f5d0",
     "user": "5d7a514b5d2c12c7449be045",
-    "name": "Farm 1",
-    "description": "Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer",
+    "name": "Felicia's",
+    "description": "Did you know that right here in Tucson there are thousands of people who struggle every day to get enough healthy food to eat? Our founder was inspired to help his community and honor his wife’s memory by growing and donating fresh food. Each week, Felicia’s Farm donates an average of 700 pounds of produce and 170 dozen eggs to a local soup kitchen, helping 1,300 very low income and/or homeless people have better food to eat. Felicia's Farm can only continue with your help.",
     "website": "https://devworks.com",
     "phone": "(111) 111-1111",
     "email": "enroll@devworks.com",
+    "averageRating": 9,
     "address": "233 Bay State Rd Boston MA 02215",
     "careers": ["Web Development", "UI/UX", "Business"]
   },
   {
     "_id": "5d713a66ec8f2b88b8f830b8",
     "user": "5d7a514b5d2c12c7449be046",
-    "name": "Farm 2",
-    "description": "ModernTech has one goal, and that is to make you a rockstar developer and/or designer with a six figure salary. We teach both development and UI/UX",
+    "name": "Merchants Garden",
+    "description": "We believe food is beautiful and we aim to express this beauty in everything we do at the Merchant’s Garden. Below is the core of how we express this.",
     "website": "https://moderntech.com",
     "phone": "(222) 222-2222",
+    "averageRating": 5,
     "email": "enroll@moderntech.com",
     "address": "220 Pawtucket St, Lowell, MA 01854"
   },
   {
     "_id": "5d725a037b292f5f8ceff787",
     "user": "5c8a1d5b0190b214360dc031",
-    "name": "Farm 3",
-    "description": "Is coding your passion? Codemasters will give you the skills and the tools to become the best developer possible. We specialize in full stack web development and data science",
+    "name": "Aravaipa Creekside Growers",
+    "description": "An hour north of Tucson in the Aravaipa Valley, Aravaipa Creekside Growers is a small farm producing mushrooms, flowers, and a variety of veggies.",
     "website": "https://codemasters.com",
     "phone": "(333) 333-3333",
     "email": "enroll@codemasters.com",
+    "averageRating": 7,
     "address": "85 South Prospect Street Burlington VT 05405"
   },
   {
     "_id": "5d725a1b7b292f5f8ceff788",
     "user": "5c8a1d5b0190b214360dc032",
-    "name": "Farm 4",
-    "description": "Is coding your passion? Codemasters will give you the skills and the tools to become the best developer possible. We specialize in front end and full stack web development",
+    "name": "Careless Coyote",
+    "description": "Down in Arivaca is Careless Coyote, a farm producing seasonal jams and fruit butters, with a specialty prickly pear syrup and jelly. Careless Coyote also brings neighboring producers’ harvests to the eastside Rincon Valley Farmers Market.",
     "website": "https://devcentral.com",
     "phone": "(444) 444-4444",
+    "averageRating": 8,
     "email": "enroll@devcentral.com",
     "address": "45 Upper College Rd Kingston RI 02881"
   }

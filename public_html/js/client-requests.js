@@ -880,6 +880,7 @@ async function updateReadReviewView(reviews) {
     reviews[0].farm.name + 'SwitchView'
   );
   $('.review-farm-name').html(reviews[0].farm.name + ' Reviews');
+  $('.review-rating').html(reviews[0].farm.averageRating + '');
   $('.review').remove();
   if (reviews.length > 0) {
     $.each(reviews, function (index, review) {

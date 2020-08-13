@@ -1,100 +1,91 @@
 [
   {
     "_id": "5d725a4a7b292f5f8ceff789",
-    "title": "Front End Web Development",
-    "description": "This course will provide you with all of the essentials to become a successful frontend web developer. You will learn to master HTML, CSS and front end JavaScript, along with tools like Git, VSCode and front end frameworks like Vue",
+    "title": "Eggplant",
+    "description": "Eggplant, aubergine or brinjal is a plant species in the nightshade family Solanaceae. Solanum melongena is grown worldwide for its edible fruit. Most commonly purple, the spongy, absorbent fruit is used in several cuisines.",
     "price": 8,
     "quantity": 800,
-    "minimumSkill": "beginner",
-    "scholarhipsAvailable": true,
+
     "farm": "5d713995b721c3bb38c1f5d0",
     "user": "5d7a514b5d2c12c7449be045"
   },
   {
     "_id": "5d725c84c4ded7bcb480eaa0",
-    "title": "Full Stack Web Development",
-    "description": "In this course you will learn full stack web development, first learning all about the frontend with HTML/CSS/JS/Vue and then the backend with Node.js/Express/MongoDB",
+    "title": "Mushrooms",
+    "description": "A mushroom or toadstool is the fleshy, spore-bearing fruiting body of a fungus, typically produced above ground, on soil, or on its food source.",
     "price": 12,
     "quantity": 100,
-    "minimumSkill": "intermediate",
-    "scholarhipsAvailable": true,
+
     "farm": "5d713995b721c3bb38c1f5d0",
     "user": "5d7a514b5d2c12c7449be045"
   },
   {
     "_id": "5d725cb9c4ded7bcb480eaa1",
-    "title": "Full Stack Web Dev",
-    "description": "In this course you will learn all about the front end with HTML, CSS and JavaScript. You will master tools like Git and Webpack and also learn C# and ASP.NET with Postgres",
+    "title": "Onions",
+    "description": "The onion, also known as the bulb onion or common onion, is a vegetable that is the most widely cultivated species of the genus Allium.",
     "price": 10,
     "quantity": 120,
-    "minimumSkill": "intermediate",
-    "scholarhipsAvailable": true,
+
     "farm": "5d713a66ec8f2b88b8f830b8",
     "user": "5d7a514b5d2c12c7449be046"
   },
   {
     "_id": "5d725cd2c4ded7bcb480eaa2",
-    "title": "UI/UX",
-    "description": "In this course you will learn to create beautiful interfaces. It is a mix of design and development to create modern user experiences on both web and mobile",
+    "title": "Prime Steak",
+    "description": "Wet aged and exquisitely marbled, you can't find better prime beef than Kansas City Steak Company USDA Prime Ribeye Steak. Only 5-6% of all beef can be labeled USDA Prime. Taste the difference.",
     "price": 12,
     "quantity": 100,
-    "minimumSkill": "intermediate",
-    "scholarhipsAvailable": true,
+
     "farm": "5d713a66ec8f2b88b8f830b8",
     "user": "5d7a514b5d2c12c7449be046"
   },
   {
     "_id": "5d725ce8c4ded7bcb480eaa3",
-    "title": "Web Design & Development",
-    "description": "Get started building websites and web apps with HTML/CSS/JavaScript/PHP. We teach you",
+    "title": "Lettuce",
+    "description": "Lettuce is an annual plant of the daisy family, Asteraceae. It is most often grown as a leaf vegetable, but sometimes for its stem and seeds. Lettuce is most often used for salads.",
     "price": 10,
     "quantity": 120,
-    "minimumSkill": "beginner",
-    "scholarhipsAvailable": true,
+
     "farm": "5d725a037b292f5f8ceff787",
     "user": "5c8a1d5b0190b214360dc031"
   },
   {
     "_id": "5d725cfec4ded7bcb480eaa4",
-    "title": "Data Science Program",
-    "description": "In this course you will learn Python for data science, machine learning and big data tools",
+    "title": "Artisnal Cheese",
+    "description": "Artisanal cheese refers to cheeses produced by hand using the traditional craftsmanship of skilled cheesemakers. As a result, the cheeses are often more complex in taste and variety",
     "price": 10,
     "quantity": 90,
-    "minimumSkill": "intermediate",
-    "scholarhipsAvailable": false,
+
     "farm": "5d725a037b292f5f8ceff787",
     "user": "5c8a1d5b0190b214360dc031"
   },
   {
     "_id": "5d725cfec4ded7bcb480eaa5",
-    "title": "Web Development",
-    "description": "This course will teach you how to build high quality web applications with technologies like React, Node.js, PHP & Laravel",
+    "title": "Yellow Squash",
+    "description": "Summer squash are squashes that are harvested when immature, while the rind is still tender and edible. Nearly all summer squashes are varieties of Cucurbita pepo, though not all Cucurbita pepo are considered summer squashes",
     "price": 8,
     "quantity": 800,
-    "minimumSkill": "beginner",
-    "scholarhipsAvailable": false,
+
     "farm": "5d725a1b7b292f5f8ceff788",
     "user": "5c8a1d5b0190b214360dc032"
   },
   {
     "_id": "5d725cfec4ded7bcb480eaa6",
-    "title": "Software QA",
-    "description": "This course will teach you everything you need to know about quality assurance",
+    "title": "Potatoes",
+    "description": "One potato, about the size of your fist, has only 110 calories and is loaded with important nutrients like potassium, fiber, vitamin C, and complex carbohydrates. They are naturally fat free, cholesterol free, and contain no sodium.",
     "price": 6,
     "quantity": 50,
-    "minimumSkill": "intermediate",
-    "scholarhipsAvailable": false,
+
     "farm": "5d725a1b7b292f5f8ceff788",
     "user": "5c8a1d5b0190b214360dc032"
   },
   {
     "_id": "5d725cfec4ded7bcb480eaa7",
-    "title": "IOS Development",
-    "description": "Get started building mobile applications for IOS using Swift and other tools",
+    "title": "Zuchinni",
+    "description": "The zucchini or courgette is a summer squash, of Mesoamerican origin. We grow it the same way. ",
     "price": 8,
     "quantity": 60,
-    "minimumSkill": "intermediate",
-    "scholarhipsAvailable": false,
+
     "farm": "5d725a1b7b292f5f8ceff788",
     "user": "5c8a1d5b0190b214360dc032"
   }
