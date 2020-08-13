@@ -471,9 +471,10 @@ async function createProduct() {
     price: $('#add-product-price').val(),
     quantity: $('.add-product-quantity').val(),
   };
+  let farmID = JSON.parse(sessionStorage.getItem('farm'))[0].id;
   $.ajax({
     contentType: 'application/json; charset=utf-8',
-    url: 'https://windmeal.live/api/v1/products',
+    url: 'https://windmeal.live/api/v1/farms' + farmID + '/products',
     method: 'POST',
     headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` },
     data: JSON.stringify(msg),
