@@ -187,7 +187,7 @@ exports.findFarmInRadius = asyncHandler(async (req, res, next) => {
     },
   });
 
-  res.status(200).json(res.advancedResults);
+  res.status(200).json({ success: true, data: farms });
 });
 
 //@desc   Get publishers for Farm
