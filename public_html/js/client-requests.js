@@ -469,7 +469,7 @@ async function createProduct() {
     title: $('#add-product-title').val(),
     description: $('#add-product-description').val(),
     price: $('#add-product-price').val(),
-    quantity: $('.add-product-quantity').val(),
+    quantity: $('#add-product-quantity').val(),
   };
   let farmID = JSON.parse(sessionStorage.getItem('farm'))[0].id;
   $.ajax({
