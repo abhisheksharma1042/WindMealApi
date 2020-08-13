@@ -960,7 +960,7 @@ async function updateManageProductsView(products) {
         .toggleClass('manage-product-card');
       $newproduct.removeClass('base-manage-product-card');
       $newproduct
-        .find('.manage-product-card-name')
+        .find('#manage-product-card-name')
         .prop('id', product.farm._id + 'Title')
         .html(product.farm.name);
       $newproduct
