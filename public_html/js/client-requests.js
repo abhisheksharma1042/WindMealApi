@@ -292,9 +292,11 @@ async function findFarm(zipcode, miles) {
     success: function (result) {
       if (result.success) {
         sessionStorage.setItem('count', result.count);
-        setupPagination(result.pagination);
+        if (result.pagination) {
+          setupPagination(result.pagination);
+        }
+        farmsView('no-update');
         displayFarms(result.data);
-        farmsView(null);
       }
     },
     error: function (error) {
@@ -1027,6 +1029,9 @@ async function farmsView(filter) {
   $('.userNav').show();
   $('.manage-reviews').hide();
   $('.login').hide();
+  if (filter === 'no-update') {
+    return;
+  }
   if (filter) {
     getAllFarms(filter);
   } else {
