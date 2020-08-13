@@ -23,11 +23,11 @@
 
 <body>
   <!-- User Navbar -->
-  <nav class="userNav navbar navbar-dark navbar-expand-lg  navbar-custom" style="background-color: #96bb7c;">
+  <nav class="userNav navbar navbar-dark navbar-expand-lg fix-top navbar-custom" style="background-color: #96bb7c;">
     <div class="container"><a class="navbar-brand" href="index.html"><i class="fas fa-tractor"></i>WindMeal</a><button
         data-toggle="collapse" class="navbar-toggler border rounded-0 border-white shadow-sm collapsed"
-        data-target="#navbarResponsive" aria-expanded="false"><span class="navbar-toggler-icon"></span></button>
-      <div class="navbar-collapse align-items-center align-content-center collapse" id="navbarResponsive" style="">
+        data-target="#navbarResponsiveUser" aria-expanded="false"><span class="navbar-toggler-icon"></span></button>
+      <div class="navbar-collapse align-items-center align-content-center collapse" id="navbarResponsiveUser" style="">
         <ul class="nav navbar-nav justify-content-between ml-auto">
           <li class="nav-item " role="presentation"></li>
           <li class="nav-item dropdown">
@@ -59,7 +59,7 @@
   <nav class="homepageNav navbar navbar-dark navbar-expand-lg navbar-custom" style="background-color: #96bb7c;">
     <div class="container"><a class="navbar-brand" href="index.html"><i class="fas fa-tractor"></i>WindMeal</a><button
         data-toggle="collapse" class="navbar-toggler border rounded-0 border-white shadow-sm collapsed"
-        data-target="#navbarResponsive" aria-expanded="false"><span class="navbar-toggler-icon"></span></button>
+        data-target="#navbarResponsiveHome" aria-expanded="false"><span class="navbar-toggler-icon"></span></button>
       <div class="navbar-collapse align-items-center align-content-center collapse" id="navbarResponsiveHome" style="">
         <ul class="nav navbar-nav justify-content-between ml-auto">
           <li class="nav-item " role="presentation"></li>
@@ -1148,7 +1148,7 @@
       if (!next) {
         return;
       }
-      let filterStr = getFilterStr() + '&page=' + next.page;
+      let filterStr = getFilterStr() + 'page=' + next.page;
       farmsView(filterStr);
     });
 
@@ -1157,7 +1157,7 @@
       if (!previous) {
         return;
       }
-      let filterStr = getFilterStr() + '&page=' + previous.page;
+      let filterStr = getFilterStr() + 'page=' + previous.page;
       farmsView(filterStr);
     });
 
@@ -1243,7 +1243,7 @@
       if ($('#filter-form-rating').val() !== 'any') {
         ratingFilter += $('#filter-form-rating').val();
       } else {
-        ratingFilter += '0';
+        ratingFilter = '';
       }
 
       let filterStr = ratingFilter + '&' + categoryFilter;
