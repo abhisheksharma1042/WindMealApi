@@ -60,7 +60,7 @@
     <div class="container"><a class="navbar-brand" href="index.html"><i class="fas fa-tractor"></i>WindMeal</a><button
         data-toggle="collapse" class="navbar-toggler border rounded-0 border-white shadow-sm collapsed"
         data-target="#navbarResponsive" aria-expanded="false"><span class="navbar-toggler-icon"></span></button>
-      <div class="navbar-collapse align-items-center align-content-center collapse" id="navbarResponsive" style="">
+      <div class="navbar-collapse align-items-center align-content-center collapse" id="navbarResponsiveHome" style="">
         <ul class="nav navbar-nav justify-content-between ml-auto">
           <li class="nav-item " role="presentation"></li>
           <li class="nav-item" role="presentation">
@@ -68,7 +68,8 @@
           </li>
           <li class="nav-item" role="presentation"></li>
           <li class="nav-item" role="presentation">
-            <a class="nav-link showcase-registerView" href="#"><i class=" fas fa-user-plus"></i> Register</a>
+            <a class="nav-link showcase-registerView" onclick="registerView()" href="#"><i
+                class=" fas fa-user-plus"></i> Register</a>
           </li>
           <li class="nav-item" role="presentation"></li>
           <li class="nav-item" role="presentation">
@@ -1023,7 +1024,7 @@
       });
 
       $('.showcase-registerView').on('click', function () {
-        registerView();
+
       });
 
       $('.manage-review-card-delete').on('click', function () {

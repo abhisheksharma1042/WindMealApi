@@ -1064,6 +1064,7 @@ async function farmView(farmID) {
 }
 
 async function registerView() {
+  $('#register-form').css('display', 'inline-block');
   $('.farm').hide();
   $('.read-review').hide();
   $('.write-review').hide();
