@@ -293,8 +293,8 @@ async function findFarm(zipcode, miles) {
       if (result.success) {
         sessionStorage.setItem('count', result.count);
         setupPagination(result.pagination);
-
         displayFarms(result.data);
+        farmsView(null);
       }
     },
     error: function (error) {
