@@ -810,6 +810,7 @@ async function displayProducts(listings) {
       } else {
         $newproduct.find('button').prop('disabled', false);
       }
+      $newproduct.append('<br><br>');
       $('.magic').append($newproduct);
       $('.product').show();
     });

@@ -5,24 +5,21 @@
       Description: styling for Final project front-end.
 ====================================================================== */
 
-/* .magic {
-  position: absolute;
-  height: 92.3%;
-  width: 87%;
-  background-color: transparent;
+.magic {
   overflow-y: scroll;
-} */
+}
 
 .base-product,
 .product {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   align-items: stretch;
   margin-top: 50px;
   margin-bottom: 50px;
-  position: relative;
-  height: 280px;
+  position: relative; */
+  /* height: 280px; */
   /*	margin-right: 50px;*/
+  margin: 1rem;
 }
 
 .product-card {
@@ -35,8 +32,9 @@
 .product-card-left {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 30%;
+  /* justify-content: space-between; */
+  /* width: 30%; */
+  max-width: 30%;
   background: #f5f1da;
   text-align: center;
   border-bottom-left-radius: 15px;
@@ -45,35 +43,80 @@
 }
 
 .product-card-right {
-  width: 70%;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+  max-width: 70%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   background: #f5f1da;
-  border-bottom-right-radius: 15px;
-  border-top-right-radius: 15px;
+
   text-align: left;
   padding-left: 20px;
 }
 
-.img-wrap {
+/* .img-wrap {
   width: 170px;
   height: 120px;
   align-self: center;
-}
+} */
 
 .buy-now {
   padding-bottom: 20px;
 }
 
-.product-dscrp {
+/* .product-dscrp {
   padding-top: 15px;
-}
+} */
 
 .product-price {
   padding-top: 15px;
 }
 
-.product-btn {
+/* .product-btn {
   padding-top: 20px;
+} */
+@media (max-width: 576px) {
+  .card {
+    max-width: 100%;
+  }
+  .product-card-left {
+    border-right: 0px;
+  }
+  .product-card-right {
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+  }
+
+  .product-card-left {
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-group {
+    flex-flow: column;
+  }
+  .card {
+    max-width: 100%;
+  }
+  .product-card-left {
+    border-right: 0px;
+  }
+  .product-card-right {
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+  }
+
+  .product-card-left {
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-dscrp {
+    font-size: 12px;
+  }
 }

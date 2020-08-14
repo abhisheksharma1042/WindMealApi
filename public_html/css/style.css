@@ -6,7 +6,7 @@
 ====================================================================== */
 
 html {
-  overflow: scroll;
+  /* overflow: scroll; */
   overflow-x: hidden;
 }
 ::-webkit-scrollbar {
