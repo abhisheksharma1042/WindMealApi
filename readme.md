@@ -1,6 +1,10 @@
 # WindMeal API
 
-> Backend API for WindMeal application, which is a local farm directory website
+> Backend API for WindMeal application, which is a local farm directory website.
+
+## Usage
+
+Rename "config/config.env.env" to "config/config.env" and update values/settings to your own.
 
 ## Install Dependencies
 
