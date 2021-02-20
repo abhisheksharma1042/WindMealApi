@@ -835,7 +835,7 @@ async function updateFarmView(farm) {
 
   $('#farm-view-map').attr(
     'src',
-    `https://www.google.com/maps/embed/v1/place?key=AIzaSyAGiEYZ3yMYMvdz5yPdg38CuF49zt5Xpn8&q=${q}&zoom=15`
+    `https://www.google.com/maps/embed/v1/place?key=${process.env.GOOGLE_API_KEY}&q=${q}&zoom=15`
   );
   if (farm.meat) {
     $('#farm-view-meat').html('<i class="fas fa-check text-success"></i> Meat');
