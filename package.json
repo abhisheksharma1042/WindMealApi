@@ -33,5 +33,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhisheksharma1042/WindMealApi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/abhisheksharma1042/WindMealApi/issues"
+  },
+  "homepage": "https://github.com/abhisheksharma1042/WindMealApi#readme"
 }
