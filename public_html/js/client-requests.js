@@ -1,7 +1,6 @@
 /*======================================================================
       Author: Abhishek Sharma
       FileName: style.css
-      Class: CSC 337
       Description: Describes all iterraction with front-end and makes calls to API
 ====================================================================== */
 
